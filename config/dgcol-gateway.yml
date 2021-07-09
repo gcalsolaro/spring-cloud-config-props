@@ -1,0 +1,31 @@
+info:
+  app:
+    name: dgcol Gateway
+
+server:
+  port: 9000
+    
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: dgcol-instance
+        uri: http://localhost:8081
+        predicates:
+        - Path=/ista/**
+        filters:
+        - RewritePath=/ista/(?<path>.*), /$\{path}
+      - id: dgcol-storage
+        uri: http://localhost:8082
+        predicates:
+        - Path=/stor/**
+        filters:
+        - RewritePath=/stor/(?<path>.*), /$\{path}
+
+management:
+  endpoints:
+    web:
+      base-path: /
