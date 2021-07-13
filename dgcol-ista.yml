@@ -1,7 +1,7 @@
 info:
   app:
     name: dgcol-ista
-    description: Ista Microservicez
+    description: Ista Microservice
 
 server:
   port: 8081
