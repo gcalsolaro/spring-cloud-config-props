@@ -5,7 +5,7 @@ app:
 path:
   base: /opt/dgco/mgdb
   config: ${path.base}/config
-  temp: /tmpooss
+  temp: /tmp
 sgpa:
   stor:
     client:
