@@ -11,4 +11,4 @@ sgpa:
     client:
       timeout:
         seconds: 130
-    url: https://sgpa-stor-sv.ossv.intra.infocamere.it/pippo
+    url: https://sgpa-stor-sv.ossv.intra.infocamere.it/
