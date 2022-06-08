@@ -1,7 +1,7 @@
 info:
   app:
     name: dgcol-ista
-    description: Ista Microservice
+    description: Ista Microservice Brooke
 
 server:
   port: 8081
