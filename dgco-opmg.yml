@@ -1,0 +1,26 @@
+server:
+  port: 8080
+logging:
+  config: file:/opt/dgco/opmg/config/logback-spring.xml
+spring:
+  mvc:
+    servlet:
+      load-on-startup: 1
+springdoc:
+  pre-loading-enabled: true
+  packagesToScan: it.infocamere.dgco.dgcoopmg.controller
+  swagger-ui:
+    tags-sorter: alpha
+    doc-expansion: none
+    path: /swagger-ui.html
+    display-request-duration: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        
+app:
+  actuator:
+    reloadable:
+      label: Route to OPMG
