@@ -55,4 +55,4 @@ management:
 
 auth:
   api:
-    enable: false
+    enable: true
