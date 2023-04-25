@@ -1,0 +1,48 @@
+server:
+  port: 8060
+logging:
+  config: file:/opt/dgco/gate/config/logback-spring.xml
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      # OPERE
+      - id: opere-service
+        uri: http://localhost:8080
+        predicates:
+        - Path=/opere/**
+        filters:
+        - RewritePath=/opere/(?<path>.*), /$\{path}
+
+      # DOMANDE
+      - id: domande-service
+        uri: http://localhost:8081
+        predicates:
+        - Path=/domande/**
+        filters:
+        - RewritePath=/domande/(?<path>.*), /$\{path}
+
+      # Only 4 OAS3
+      - id: openapi
+        uri: http://localhost:8060
+        predicates:
+        - Path=/v3/api-docs/**
+        filters:
+        - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+        - OpenApiDocFilter
+springdoc:
+  swagger-ui:
+    doc-expansion: none
+    path: /swagger-ui.html
+    display-request-duration: true
