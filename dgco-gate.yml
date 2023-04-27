@@ -21,9 +21,10 @@ spring:
       - id: opere-service
         uri: http://localhost:8080
         predicates:
-        - Path=/opere/**
-        filters:
-        - RewritePath=/opere/(?<path>.*), /$\{path}
+        #- Path=/opere/**
+        - After=2023-04-28T10:00:00.000-07:00[Europe/Rome]
+        #filters:
+        #- RewritePath=/opere/(?<path>.*), /$\{path}
 
       # DOMANDE
       - id: domande-service
@@ -31,15 +32,14 @@ spring:
         predicates:
         #- Path=/domande/**
         - After=2023-04-27T10:00:00.000-07:00[Europe/Rome]
-        filters:
-        - RewritePath=/domande/(?<path>.*), /$\{path}
+        #filters:
+        #- RewritePath=/domande/(?<path>.*), /$\{path}
 
       # Only 4 OAS3
       - id: openapi
         uri: http://localhost:8060
         predicates:
-        #- Path=/v3/api-docs/**
-        - After=2023-04-28T10:00:00.000-07:00[Europe/Rome]
+        - Path=/v3/api-docs/**
         filters:
         - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
         - OpenApiDocFilter
