@@ -27,7 +27,7 @@ spring:
         - Method=GET,POST
         filters:
         #- RewritePath=/opere/(?<path>.*), /$\{path}
-        - AddRequestHeader=X-Request-opmg, ciao_opere
+        - AddRequestHeader=X-Request, ciao_opere
 
       # DOMANDE
       - id: domande-service
@@ -39,7 +39,7 @@ spring:
         - Method=PUT
         filters:
         #- RewritePath=/domande/(?<path>.*), /$\{path}
-        - AddRequestHeader=X-Request-opmg, ciao_domande
+        - AddRequestHeader=X-Request, ciao_domande
 
       # Only 4 OAS3
       - id: openapi
