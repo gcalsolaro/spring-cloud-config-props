@@ -22,7 +22,7 @@ spring:
         uri: http://localhost:8080
         predicates:
         #- Path=/opere/**
-        - Before=2023-04-27T12:05:00.000000000+02:00[Europe/Berlin]
+        - Before=2023-04-27T12:16:00.000000000+02:00[Europe/Berlin]
         #filters:
         #- RewritePath=/opere/(?<path>.*), /$\{path}
 
@@ -31,7 +31,7 @@ spring:
         uri: http://localhost:8081
         predicates:
         #- Path=/domande/**
-        - After=2023-04-27T12:05:00.000000000+02:00[Europe/Berlin]
+        - After=2023-04-27T12:16:00.000000000+02:00[Europe/Berlin]
         #filters:
         #- RewritePath=/domande/(?<path>.*), /$\{path}
 
