@@ -29,7 +29,7 @@ spring:
         #- RewritePath=/opere/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_opere_REQUEST
         #- AddResponseHeader=X-Response, ciao_opere_RESPONSE
-        - RedirectTo=302, https://www.google.it/
+        - RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
 
       # DOMANDE
       - id: domande-service
@@ -42,7 +42,8 @@ spring:
         filters:
         #- RewritePath=/domande/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_domande_REQUEST
-        - AddResponseHeader=X-Response, ciao_domande_RESPONSE
+        #- AddResponseHeader=X-Response, ciao_domande_RESPONSE
+        - RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
 
       # Only 4 OAS3
       - id: openapi
