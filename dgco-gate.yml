@@ -25,8 +25,9 @@ spring:
         #- Before=2023-04-27T12:16:00.000000000+02:00[Europe/Berlin]
         #- Header=X-Request-Id, 222
         - Method=GET,POST
-        #filters:
+        filters:
         #- RewritePath=/opere/(?<path>.*), /$\{path}
+        - AddRequestHeader=X-Request-opmg, ciao_opere
 
       # DOMANDE
       - id: domande-service
@@ -36,8 +37,9 @@ spring:
         #- After=2023-04-27T12:16:00.000000000+02:00[Europe/Berlin]
         #- Header=X-Request-Id, 111
         - Method=PUT
-        #filters:
+        filters:
         #- RewritePath=/domande/(?<path>.*), /$\{path}
+        - AddRequestHeader=X-Request-opmg, ciao_domande
 
       # Only 4 OAS3
       - id: openapi
