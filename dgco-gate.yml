@@ -28,7 +28,8 @@ spring:
         filters:
         #- RewritePath=/opere/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_opere_REQUEST
-        - AddResponseHeader=X-Response, ciao_opere_RESPONSE
+        #- AddResponseHeader=X-Response, ciao_opere_RESPONSE
+        - RedirectTo=302, https://www.google.it/
 
       # DOMANDE
       - id: domande-service
