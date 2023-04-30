@@ -55,16 +55,16 @@ spring:
               factor: 2
               basedOnPreviousValue: false
               
-      - id: json-grpc
-        uri: https://localhost:8082/testhello
-        predicates:
-        - Path=/json/**
-        filters:
-        - name: JsonToGrpc
-          args:
-            protoFile: file:proto/hello.proto
-            service: com.example.grpcserver.hello.HelloService
-            method: hello
+      #- id: json-grpc
+      #  uri: https://localhost:8082/testhello
+      #  predicates:
+      #  - Path=/json/**
+      #  filters:
+      #  - name: JsonToGrpc
+      #    args:
+      #      protoFile: file:proto/hello.proto
+      #      service: com.example.grpcserver.hello.HelloService
+      #      method: hello
 
       # Only 4 OAS3
       - id: openapi
