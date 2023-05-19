@@ -44,20 +44,20 @@ spring:
         #- AddRequestHeader=X-Request, ciao_domande_REQUEST
         #- AddResponseHeader=X-Response, ciao_domande_RESPONSE
         #- RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
-        - name: Retry
-          args:
-            retries: 3
-            exceptions:
-              - java.net.ConnectException
-            methods:
-              - GET
-              - POST
-              - PUT
-            backoff:
-              firstBackoff: 2000ms
-              maxBackoff: 10000ms
-              factor: 2
-              basedOnPreviousValue: false
+        #- name: Retry
+        #  args:
+        #    retries: 3
+        #    exceptions:
+        #      - java.net.ConnectException
+        #    methods:
+        #      - GET
+        #      - POST
+        #      - PUT
+        #    backoff:
+        #      firstBackoff: 2000ms
+        #      maxBackoff: 10000ms
+        #      factor: 2
+        #      basedOnPreviousValue: false
         - name: CircuitBreaker
           args:
             name: fetchIngredients
