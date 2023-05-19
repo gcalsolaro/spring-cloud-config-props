@@ -60,13 +60,13 @@ spring:
         #      basedOnPreviousValue: false
         - name: CircuitBreaker
           args:
-            name: resilienceCircuitBreaker
+            name: fallback
             fallbackUri: forward:/fallback
-            
-      - id: ingredients-fallback
+      - id: fallback
         uri: http://localhost:8080
         predicates:
-        - Path=/fallback
+        - Path=/fallback/**
+
 
       # Only 4 OAS3
       - id: openapi
