@@ -44,7 +44,7 @@ spring:
         #- AddRequestHeader=X-Request, ciao_domande_REQUEST
         #- AddResponseHeader=X-Response, ciao_domande_RESPONSE
         #- RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
-        - name: Retry
+        - name: MyRetry
           args:
             retries: 3
             exceptions:
