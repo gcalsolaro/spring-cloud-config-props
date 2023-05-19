@@ -24,7 +24,7 @@ spring:
         #- Path=/opere/**
         #- Before=2023-04-27T12:16:00.000000000+02:00[Europe/Berlin]
         #- Header=X-Request-Id, 222
-        - Method=GET,POST,PUT
+        - Method=GET,POST
         filters:
         #- RewritePath=/opere/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_opere_REQUEST
