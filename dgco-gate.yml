@@ -63,6 +63,7 @@ spring:
             name: exampleCircuitBreaker
             fallbackUri: forward:/fallback
             statusCodes:
+              - OK
               - INTERNAL_SERVER_ERROR
               - BAD_GATEWAY
               - SERVICE_UNAVAILABLE
