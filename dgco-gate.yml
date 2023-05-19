@@ -58,6 +58,10 @@ spring:
               maxBackoff: 10000ms
               factor: 2
               basedOnPreviousValue: false
+        - name: CircuitBreaker
+          args:
+            name: fetchIngredients
+            fallbackUri: forward:/fallback
 
       # Only 4 OAS3
       - id: openapi
