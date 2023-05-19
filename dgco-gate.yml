@@ -74,55 +74,6 @@ auth:
     enable: false
     
 # --- RESILIENCE4J PROPERTIES - EXPERIMENTAL --- #
-
-# CIRCUIT BREAKER
-resilience4j.circuitbreaker:
-  configs:
-    default:
-      slidingWindowSize: 10
-      minimumNumberOfCalls: 5
-      permittedNumberOfCallsInHalfOpenState: 3
-      automaticTransitionFromOpenToHalfOpenEnabled: true
-      waitDurationInOpenState: 2s
-      failureRateThreshold: 50
-      eventConsumerBufferSize: 10
-      recordExceptions:
-        - org.springframework.web.client.HttpServerErrorException
-        - java.io.IOException
-        - java.net.ConnectException
-      ignoreExceptions:
-        - java.lang.IllegalStateException
-    shared:
-      slidingWindowSize: 100
-      permittedNumberOfCallsInHalfOpenState: 30
-      waitDurationInOpenState: 1s
-      failureRateThreshold: 50
-      eventConsumerBufferSize: 10
-      ignoreExceptions:
-        - java.lang.IllegalStateException
-  instances:
-    resilienceCircuitBreaker:
-      baseConfig: default
-      
-# TIME LIMITER
-resilience4j.timelimiter:
-  configs:
-    default:
-      timeout-duration: 5s
-  instances:
-    resilienceCircuitBreaker:
-      base-config: default
-
-# RATE LIMITER
-resilience4j.ratelimiter:
-  configs:
-    default:
-      limitForPeriod: 2
-      limitRefreshPeriod: 1s
-      timeoutDuration: 1s
-  instances:
-    resilienceCircuitBreaker:
-      base-config: default
       
 # RETRY
 resilience4j.retry:
