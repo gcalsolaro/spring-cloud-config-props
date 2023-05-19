@@ -44,16 +44,7 @@ spring:
         #- AddRequestHeader=X-Request, ciao_domande_REQUEST
         #- AddResponseHeader=X-Response, ciao_domande_RESPONSE
         #- RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
-        - name: Retry
-          args:
-            retries: 3
-            statuses: INTERNAL_SERVER_ERROR
-            methods: PUT
-            backoff:
-              firstBackoff: 10ms
-              maxBackoff: 50ms
-              factor: 2
-              basedOnPreviousValue: false
+        - CircuitBreaker=resilienceCircuitBreaker
 
       # Only 4 OAS3
       - id: openapi
@@ -81,3 +72,37 @@ management:
 auth:
   api:
     enable: false
+    
+# --- RESILIENCE4J PROPERTIES --- #
+      
+# TIME LIMITER
+resilience4j.timelimiter:
+  configs:
+    default:
+      timeout-duration: 5s
+  instances:
+    resilienceCircuitBreaker:
+      base-config: default
+
+# RATE LIMITER
+resilience4j.ratelimiter:
+  configs:
+    default:
+      limitForPeriod: 2
+      limitRefreshPeriod: 1s
+      timeoutDuration: 1s
+  instances:
+    resilienceCircuitBreaker:
+      base-config: default
+      
+# RETRY
+resilience4j.retry:
+  configs:
+    default:
+      max-attempts: 3
+      wait-duration: 3s
+      retry-exceptions:
+        - java.lang.Exception
+  instances:
+    resilienceCircuitBreaker:
+      base-config: default
