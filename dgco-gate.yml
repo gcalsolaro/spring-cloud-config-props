@@ -49,6 +49,10 @@ spring:
             retries: 3
             exceptions:
               - java.net.ConnectException
+            methods:
+              - GET
+              - POST
+              - PUT
             backoff:
               firstBackoff: 2000ms
               maxBackoff: 10000ms
