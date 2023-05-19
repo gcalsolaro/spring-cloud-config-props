@@ -89,6 +89,7 @@ resilience4j.circuitbreaker:
       recordExceptions:
         - org.springframework.web.client.HttpServerErrorException
         - java.io.IOException
+        - java.net.ConnectException
       ignoreExceptions:
         - java.lang.IllegalStateException
     shared:
@@ -130,7 +131,7 @@ resilience4j.retry:
       max-attempts: 3
       wait-duration: 3s
       retry-exceptions:
-        - java.lang.Exception
+        - java.net.ConnectException
   instances:
     resilienceCircuitBreaker:
       base-config: default
