@@ -96,14 +96,15 @@ resilience4j.ratelimiter:
       base-config: default
       
 # RETRY
-resilience4j.retry:
-  configs:
-    default:
-      max-attempts: 3
-      wait-duration: 3s
-      retry-exceptions:
-        - java.lang.Exception
-        - java.net.ConnectException
-  instances:
-    resilienceCircuitBreaker:
-      base-config: default
+resilience4j:
+  retry:
+    retry-aspect-order: 2
+    instances:
+      resilienceCircuitBreaker:
+        max-attempts: 3
+        wait-duration: 5s
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2
+        retry-exceptions:
+         - java.lang.Exception
+         - java.net.ConnectException
