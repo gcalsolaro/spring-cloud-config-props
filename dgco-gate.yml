@@ -85,3 +85,9 @@ management:
 auth:
   api:
     enable: false
+    
+feign:
+  client:
+    config:
+      default:
+        retryer: it.infocamere.dgco.dgcogate.config.CustomRetryerConfig
