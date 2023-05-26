@@ -101,7 +101,7 @@ resilience4j.circuitbreaker:
   configs:
     default:
       slidingWindowSize: 10
-      minimumNumberOfCalls: 1
+      minimumNumberOfCalls: 3
       permittedNumberOfCallsInHalfOpenState: 3
       automaticTransitionFromOpenToHalfOpenEnabled: true
       waitDurationInOpenState: 5s
