@@ -26,7 +26,7 @@ spring:
         #- Header=X-Request-Id, 222
         - Method=GET,POST
         filters:
-        - CircuitBreaker=resilienceCircuitBreaker
+        #- CircuitBreaker=resilienceCircuitBreaker
         #- RewritePath=/opere/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_opere_REQUEST
         #- AddResponseHeader=X-Response, ciao_opere_RESPONSE
