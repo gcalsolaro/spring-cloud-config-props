@@ -100,7 +100,7 @@ feign:
 resilience4j.circuitbreaker:
   configs:
     default:
-      slidingWindowSize: 1
+      slidingWindowSize: 10
       minimumNumberOfCalls: 1
       permittedNumberOfCallsInHalfOpenState: 3
       automaticTransitionFromOpenToHalfOpenEnabled: true
@@ -111,8 +111,20 @@ resilience4j.circuitbreaker:
   instances:
     resilienceCircuitBreaker:
       baseConfig: default
+
+# RATE LIMITER
+resilience4j.ratelimiter:
+  configs:
+    default:
+      limitForPeriod: 10
+      limitRefreshPeriod: 10s
+      timeoutDuration: 1s
+  instances:
+    resilienceCircuitBreaker:
+      base-config: default 
       
 # TIME LIMITER
+# Tempo di attesa oltre il quale è improbabile un risultato positivo dell'operazione
 resilience4j.timelimiter:
   configs:
     default:
@@ -121,17 +133,6 @@ resilience4j.timelimiter:
     resilienceCircuitBreaker:
       base-config: default
 
-# RATE LIMITER
-resilience4j.ratelimiter:
-  configs:
-    default:
-      limitForPeriod: 2
-      limitRefreshPeriod: 1s
-      timeoutDuration: 1s
-  instances:
-    resilienceCircuitBreaker:
-      base-config: default
-      
 # RETRY
 resilience4j.retry:
   configs:
