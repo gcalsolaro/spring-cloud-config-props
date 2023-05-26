@@ -26,6 +26,7 @@ spring:
         #- Header=X-Request-Id, 222
         - Method=GET,POST
         filters:
+        - CircuitBreaker=resilienceCircuitBreaker
         #- RewritePath=/opere/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_opere_REQUEST
         #- AddResponseHeader=X-Response, ciao_opere_RESPONSE
@@ -92,3 +93,53 @@ feign:
     config:
       default:
         retryer: it.infocamere.dgco.dgcogate.config.CustomRetryerConfig
+        
+# --- RESILIENCE4J PROPERTIES - EXPERIMENTAL --- #
+
+# CIRCUIT BREAKER
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 1
+      minimumNumberOfCalls: 1
+      permittedNumberOfCallsInHalfOpenState: 3
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      waitDurationInOpenState: 5s
+      failureRateThreshold: 100
+      recordExceptions:
+        - java.lang.Exception
+  instances:
+    resilienceCircuitBreaker:
+      baseConfig: default
+      
+# TIME LIMITER
+resilience4j.timelimiter:
+  configs:
+    default:
+      timeout-duration: 5s
+  instances:
+    resilienceCircuitBreaker:
+      base-config: default
+
+# RATE LIMITER
+resilience4j.ratelimiter:
+  configs:
+    default:
+      limitForPeriod: 2
+      limitRefreshPeriod: 1s
+      timeoutDuration: 1s
+  instances:
+    resilienceCircuitBreaker:
+      base-config: default
+      
+# RETRY
+resilience4j.retry:
+  configs:
+    default:
+      max-attempts: 3
+      wait-duration: 3s
+      retry-exceptions:
+        - java.lang.Exception
+  instances:
+    resilienceCircuitBreaker:
+      base-config: default
