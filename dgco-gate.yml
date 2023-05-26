@@ -115,7 +115,7 @@ resilience4j.circuitbreaker:
 resilience4j.ratelimiter:
   configs:
     default:
-      limitForPeriod: 1
+      limitForPeriod: 0
       limitRefreshPeriod: 1s
       timeoutDuration: 3s
   instances:
