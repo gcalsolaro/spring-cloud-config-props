@@ -100,11 +100,11 @@ feign:
 resilience4j.circuitbreaker:
   configs:
     default:
-      minimumNumberOfCalls: 5
+      minimumNumberOfCalls: 500
       permittedNumberOfCallsInHalfOpenState: 3
       automaticTransitionFromOpenToHalfOpenEnabled: true
       waitDurationInOpenState: 5s
-      failureRateThreshold: 100
+      failureRateThreshold: 50
       recordExceptions:
         - java.lang.Exception
   instances:
