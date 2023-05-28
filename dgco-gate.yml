@@ -30,8 +30,8 @@ spring:
         #- RewritePath=/opere/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_opere_REQUEST
         #- AddResponseHeader=X-Response, ciao_opere_RESPONSE
-        - RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
-        #- Logging=[LoggingGatewayFilterFactory], true, true
+        #- RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
+        - Logging=[LoggingGatewayFilterFactory], true, true
 
       # DOMANDE
       - id: domande-service
@@ -45,7 +45,7 @@ spring:
         #- RewritePath=/domande/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_domande_REQUEST
         #- AddResponseHeader=X-Response, ciao_domande_RESPONSE
-        - RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
+        #- RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
         #- name: MyRetry
         #  args:
         #    retries: 3
