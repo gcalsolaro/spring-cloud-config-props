@@ -27,7 +27,7 @@ spring:
         #- Method=GET,POST
         filters:
         #- CircuitBreaker=resilienceCircuitBreaker
-        #- RewritePath=/opere/(?<path>.*), /$\{path}
+        - RewritePath=/opere/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_opere_REQUEST
         #- AddResponseHeader=X-Response, ciao_opere_RESPONSE
         #- RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
@@ -42,7 +42,7 @@ spring:
         #- Header=X-Request-Id, 111
         #- Method=PUT,DELETE
         filters:
-        #- RewritePath=/domande/(?<path>.*), /$\{path}
+        - RewritePath=/domande/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_domande_REQUEST
         #- AddResponseHeader=X-Response, ciao_domande_RESPONSE
         #- RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
