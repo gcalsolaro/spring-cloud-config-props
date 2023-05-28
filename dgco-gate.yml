@@ -31,7 +31,7 @@ spring:
         #- AddRequestHeader=X-Request, ciao_opere_REQUEST
         #- AddResponseHeader=X-Response, ciao_opere_RESPONSE
         #- RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
-        - Logging=[LoggingGatewayFilterFactory di Padova], true, false
+        - Logging=[LoggingGatewayFilterFactory], true, true
 
       # DOMANDE
       - id: domande-service
