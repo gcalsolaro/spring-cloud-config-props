@@ -22,8 +22,8 @@ spring:
         uri: http://localhost:8080
         predicates:
         #- Path=/opere/**
-        - Before=2023-05-28T12:55:00.000000000+02:00[Europe/Berlin]
-        #- Header=X-Request-Id, 222
+        #- Before=2023-05-28T12:55:00.000000000+02:00[Europe/Berlin]
+        - Header=X-Request-Id, 222
         #- Method=GET,POST
         filters:
         #- CircuitBreaker=resilienceCircuitBreaker
@@ -38,8 +38,8 @@ spring:
         uri: http://localhost:8081
         predicates:
         #- Path=/domande/**
-        - After=2023-05-28T12:55:00.000000000+02:00[Europe/Berlin]
-        #- Header=X-Request-Id, 111
+        #- After=2023-05-28T12:55:00.000000000+02:00[Europe/Berlin]
+        - Header=X-Request-Id, 111
         #- Method=PUT,DELETE
         filters:
         #- RewritePath=/domande/(?<path>.*), /$\{path}
