@@ -21,10 +21,10 @@ spring:
       - id: opere-service
         uri: http://localhost:8080
         predicates:
-        #- Path=/opere/**
+        - Path=/opere/**
         #- Before=2023-05-29T17:18:00.000000000+02:00[Europe/Berlin]
         #- Header=X-Request-Id, 222
-        - Method=GET,POST
+        #- Method=GET,POST
         filters:
         #- CircuitBreaker=resilienceCircuitBreaker
         #- RewritePath=/opere/(?<path>.*), /$\{path}
@@ -37,10 +37,10 @@ spring:
       - id: domande-service
         uri: http://localhost:8081
         predicates:
-        #- Path=/domande/**
+        - Path=/domande/**
         #- After=2023-05-29T17:18:00.000000000+02:00[Europe/Berlin]
         #- Header=X-Request-Id, 111
-        - Method=PUT,DELETE
+        #- Method=PUT,DELETE
         filters:
         #- RewritePath=/domande/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_domande_REQUEST
