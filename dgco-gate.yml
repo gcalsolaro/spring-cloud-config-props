@@ -86,7 +86,7 @@ management:
 
 auth:
   api:
-    enable: true
+    enable: false
     
 feign:
   client:
