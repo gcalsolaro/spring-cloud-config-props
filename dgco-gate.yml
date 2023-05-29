@@ -23,8 +23,8 @@ spring:
         predicates:
         #- Path=/opere/**
         #- Before=2023-05-29T17:18:00.000000000+02:00[Europe/Berlin]
-        - Header=X-Request-Id, 222
-        #- Method=GET,POST
+        #- Header=X-Request-Id, 222
+        - Method=GET,POST
         filters:
         #- CircuitBreaker=resilienceCircuitBreaker
         #- RewritePath=/opere/(?<path>.*), /$\{path}
@@ -39,8 +39,8 @@ spring:
         predicates:
         #- Path=/domande/**
         #- After=2023-05-29T17:18:00.000000000+02:00[Europe/Berlin]
-        - Header=X-Request-Id, 111
-        #- Method=PUT,DELETE
+        #- Header=X-Request-Id, 111
+        - Method=PUT,DELETE
         filters:
         #- RewritePath=/domande/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_domande_REQUEST
