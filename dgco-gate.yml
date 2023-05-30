@@ -24,14 +24,14 @@ spring:
         #- Path=/opere/**
         #- Before=2023-05-29T17:18:00.000000000+02:00[Europe/Berlin]
         #- Header=X-Request-Id, 222
-        - Method=GET,POST
+        #- Method=GET,POST
         filters:
         #- CircuitBreaker=resilienceCircuitBreaker
         #- RewritePath=/opere/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_opere_REQUEST
         #- AddResponseHeader=X-Response, ciao_opere_RESPONSE
         #- RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
-        - Logging=[LoggingGatewayFilterFactory], true, true
+        #- Logging=[LoggingGatewayFilterFactory], true, true
 
       # DOMANDE
       - id: domande-service
@@ -40,26 +40,26 @@ spring:
         #- Path=/domande/**
         #- After=2023-05-29T17:18:00.000000000+02:00[Europe/Berlin]
         #- Header=X-Request-Id, 111
-        - Method=PUT,DELETE
+        #- Method=PUT,DELETE
         filters:
         #- RewritePath=/domande/(?<path>.*), /$\{path}
         #- AddRequestHeader=X-Request, ciao_domande_REQUEST
         #- AddResponseHeader=X-Response, ciao_domande_RESPONSE
         #- RedirectTo=303, https://uat.interop.pagopa.it/.well-known/jwks.json
-        #- name: MyRetry
-        #  args:
-        #    retries: 3
-        #    exceptions:
-        #      - java.net.ConnectException
-        #    methods:
-        #      - GET
-        #      - POST
-        #      - PUT
-        #    backoff:
-        #      firstBackoff: 2000ms
-        #      maxBackoff: 10000ms
-        #      factor: 2
-        #      basedOnPreviousValue: false
+        - name: MyRetry
+          args:
+            retries: 3
+            exceptions:
+              - java.net.ConnectException
+            methods:
+              - GET
+              - POST
+              - PUT
+            backoff:
+              firstBackoff: 2000ms
+              maxBackoff: 10000ms
+              factor: 2
+              basedOnPreviousValue: false
 
       # Only 4 OAS3
       - id: openapi
